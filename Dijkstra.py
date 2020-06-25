@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+__author__ = "Armin Talaie"
+
+# TODO: add path accumulator to show the actual path taken to destination
 class Dijkstra:
 
     def __init__(self, n):
