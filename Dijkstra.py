@@ -10,6 +10,7 @@ class Dijkstra:
         self.not_covered = [i for i in range(1, self.V + 1)]
         self.distance = {i: float("inf") for i in range(1, self.V + 1)}
 
+    # returns node with the least distance
     def find_next(self):
         min_dist, index = -1, -1
 
@@ -20,18 +21,15 @@ class Dijkstra:
 
         return index
 
-    def reset_variables(self):
-        self.not_covered = [i for i in range(1, self.V + 1)]
-        self.distance = {i: float("inf") for i in range(1, self.V + 1)}
-
+    # find shortest path to node: end
     def find_shortest_path(self, start, end):
         #print(self.distance)
 
         if len(self.not_covered) == self.V:
-            self.reset_variables()
             self.distance[start] = 0
         self.not_covered.remove(start)
 
+        # updates adjacent distances if they're shorter
         for adj in self.vertices[start]:
             new_dist = adj[0] + self.distance[start]
             if new_dist < self.distance[adj[1]]:
